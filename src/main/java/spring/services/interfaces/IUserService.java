@@ -11,5 +11,7 @@ public interface IUserService {
     User saveEntity(User User) throws Exception;
     User getEntityByLogin(String login) throws Exception;
     List<User> getEntityList() throws Exception;
+    User updateUser(User user) throws Exception;
     void deleteEntity(String login) throws Exception;
+    void deleteAll() throws Exception;
 }

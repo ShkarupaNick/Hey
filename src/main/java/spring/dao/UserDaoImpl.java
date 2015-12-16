@@ -21,7 +21,6 @@ public class UserDaoImpl implements IUserDao {
     Transaction transaction = null;
 
 
-
     @SuppressWarnings("unchecked")
     public List findAll() {
         session = sessionFactory.openSession();
@@ -54,6 +53,22 @@ public class UserDaoImpl implements IUserDao {
         session = sessionFactory.openSession();
         transaction = session.beginTransaction();
         sessionFactory.getCurrentSession().delete(user);
+        transaction.commit();
+        session.close();
+    }
+
+    public void update(User user) {
+        session = sessionFactory.openSession();
+        transaction = session.beginTransaction();
+        session.update(user);
+        transaction.commit();
+        session.close();
+    }
+
+    public void deleteAll() {
+        session = sessionFactory.openSession();
+        transaction = session.beginTransaction();
+        session.createQuery("delete from User u").executeUpdate();
         transaction.commit();
         session.close();
     }

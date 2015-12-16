@@ -11,6 +11,19 @@
     <context:property-placeholder location="classpath:jdbc.properties"/>
     <tx:annotation-driven/>
 
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.FormHttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            </list>
+        </property>
+
+    </bean>
+
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.driver_class}"/>
@@ -34,10 +47,14 @@
     </bean>
 
 
-   <!-- <bean id="persistenceExceptionTranslationPostProcessor"
-          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" /> -->
+   <bean id="persistenceExceptionTranslationPostProcessor"
+          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
-    <bean id="userDao" class="spring.dao.UserDaoImpl"></bean>
-    <bean id="userService" class="spring.services.UserServiceImpl"></bean>
+    <bean id="userDao" class="spring.dao.UserDaoImpl"/>
+    <bean id="userService" class="spring.services.UserServiceImpl"/>
 
+    <!--Note HandlerMapping Spring3.1 began -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+    <!--Note HandlerAdapter Spring3.1 began -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
 </beans>

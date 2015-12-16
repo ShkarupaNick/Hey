@@ -14,4 +14,6 @@ public interface IUserDao {
     public User findByLogin(String login) ;
     public User save(User user) ;
     public void delete(User user) ;
+    public void update(User user);
+    public void deleteAll();
 }

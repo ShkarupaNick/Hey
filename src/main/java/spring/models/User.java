@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -15,7 +17,7 @@ import java.util.UUID;
  */
 @Entity
 @Table(name = "AppUsers")
-public class User {
+public class User implements Serializable{
     @Id
     @GeneratedValue( generator="uuid" )
     @GenericGenerator(
@@ -33,6 +35,24 @@ public class User {
     private String login;
     private String password;
 
+    private String email;
+    private Date regDate;
+
+    public User() {
+        this.regDate = new Date();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getRegDate() {
+        return regDate;
+    }
 
     public String getLogin() {
         return login;

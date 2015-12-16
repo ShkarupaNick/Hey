@@ -1,6 +1,5 @@
   <web-app>
 
-    <display-name>Archetype Created Web Application</display-name>
 
   <servlet>
     <servlet-name>rest</servlet-name>
@@ -12,16 +11,15 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
 
+
+
   <servlet-mapping>
     <servlet-name>rest</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
-<!--
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>WEB-INF/spring-mvc.xml</param-value>
-  </context-param>
--->
+
+
+
 
 </web-app>
